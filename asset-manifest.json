@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/challenge-mini-game/static/css/main.fab4b79a.chunk.css",
+    "main.js": "/challenge-mini-game/static/js/main.5ebe6e74.chunk.js",
+    "main.js.map": "/challenge-mini-game/static/js/main.5ebe6e74.chunk.js.map",
+    "runtime-main.js": "/challenge-mini-game/static/js/runtime-main.1d6aadb3.js",
+    "runtime-main.js.map": "/challenge-mini-game/static/js/runtime-main.1d6aadb3.js.map",
+    "static/js/2.bb840178.chunk.js": "/challenge-mini-game/static/js/2.bb840178.chunk.js",
+    "static/js/2.bb840178.chunk.js.map": "/challenge-mini-game/static/js/2.bb840178.chunk.js.map",
+    "index.html": "/challenge-mini-game/index.html",
+    "precache-manifest.85cdd46b2ac7f8d99bc01372b2312a1c.js": "/challenge-mini-game/precache-manifest.85cdd46b2ac7f8d99bc01372b2312a1c.js",
+    "service-worker.js": "/challenge-mini-game/service-worker.js",
+    "static/css/main.fab4b79a.chunk.css.map": "/challenge-mini-game/static/css/main.fab4b79a.chunk.css.map",
+    "static/js/2.bb840178.chunk.js.LICENSE.txt": "/challenge-mini-game/static/js/2.bb840178.chunk.js.LICENSE.txt",
+    "static/media/archer.png": "/challenge-mini-game/static/media/archer.be2c31a1.png",
+    "static/media/cavalry.png": "/challenge-mini-game/static/media/cavalry.643df87e.png",
+    "static/media/spearman.png": "/challenge-mini-game/static/media/spearman.f2f50535.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1d6aadb3.js",
+    "static/js/2.bb840178.chunk.js",
+    "static/css/main.fab4b79a.chunk.css",
+    "static/js/main.5ebe6e74.chunk.js"
+  ]
+}
