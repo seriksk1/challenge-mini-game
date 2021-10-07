@@ -2,7 +2,16 @@ import { Action } from 'redux';
 
 import { GameActions } from '../types';
 import { IGameState } from '../interfaces';
-import { GAME_START, Player, SET_WHO_SELECTING, START_NEXT_ROUND } from '../constants';
+import {
+  ADD_POINT_TO_COMPUTER,
+  ADD_POINT_TO_PLAYER,
+  GAME_OVER,
+  GAME_RESTART,
+  GAME_START,
+  Player,
+  SET_WHO_SELECTING,
+  START_NEXT_ROUND,
+} from '../constants';
 
 export const initialState: IGameState = {
   started: false,
@@ -20,6 +29,19 @@ export default function gameReducer(state: IGameState = initialState, action: Ga
         started: true,
       };
 
+    case GAME_OVER:
+      return {
+        ...state,
+        started: false,
+      };
+
+    case GAME_RESTART:
+      return {
+        ...state,
+        ...initialState,
+        started: true,
+      };
+
     case START_NEXT_ROUND:
       return {
         ...state,
@@ -30,6 +52,18 @@ export default function gameReducer(state: IGameState = initialState, action: Ga
       return {
         ...state,
         whoSelecting: action.payload,
+      };
+
+    case ADD_POINT_TO_PLAYER:
+      return {
+        ...state,
+        playerScore: state.playerScore + action.payload,
+      };
+
+    case ADD_POINT_TO_COMPUTER:
+      return {
+        ...state,
+        computerScore: state.computerScore + action.payload,
       };
 
     default:

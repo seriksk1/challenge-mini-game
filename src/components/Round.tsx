@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
-import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { RootReducer } from '../redux/reducers/rootReducer';
-import { GameMemberType, UnitType } from '../redux/types';
-import { Player } from '../redux/constants';
-
 import { getComputerUnit, getGameRounds, getPlayerUnit } from '../redux/selectors';
-import { setWhoSelecting, startNextRound } from '../redux/actions/game';
+import { setWhoSelecting, startNextRound, addPointToPlayer, addPointToComputer, gameOver } from '../redux/actions/game';
+
+import { GameMemberType, UnitType, Winner } from '../redux/types';
+import { Computer, Draw, Player } from '../redux/constants';
+
+import { RootReducer } from '../redux/reducers/rootReducer';
 import { setComputerUnit } from '../redux/actions/computer';
 
 import gameEngine from '../redux/services/gameEngine';
@@ -19,6 +19,9 @@ interface Props {
   setComputerUnit: (unit: UnitType) => void;
   startNextRound: () => void;
   setWhoSelecting: (gameMember: GameMemberType) => void;
+  addPointToPlayer: (points: number) => void;
+  addPointToComputer: (points: number) => void;
+  gameOver: () => void;
 }
 
 const Round: FC<Props> = ({
@@ -28,21 +31,39 @@ const Round: FC<Props> = ({
   setComputerUnit,
   startNextRound,
   setWhoSelecting,
+  addPointToPlayer,
+  addPointToComputer,
+  gameOver,
 }) => {
-  const history = useHistory();
+  const roundWinner = gameEngine.checkRoundWinner(playerUnit, computerUnit);
+
+  const addPointTo = (roundWinner: Winner) => {
+    if (roundWinner === Player) {
+      addPointToPlayer(1);
+      addPointToComputer(-1);
+    } else if (roundWinner === Computer) {
+      addPointToComputer(1);
+      addPointToPlayer(-1);
+    } else if (roundWinner === Draw) {
+      addPointToPlayer(1);
+      addPointToComputer(1);
+    }
+  };
 
   const handleStartNextRound = () => {
-    if (gameRounds + 1 >= 20) {
-      history.push('/results');
-    } else {
-      startNextRound();
+    addPointTo(roundWinner);
+    startNextRound();
+
+    if (gameRounds + 1 < 20) {
       setWhoSelecting(Player);
+    } else {
+      gameOver();
     }
   };
 
   React.useEffect(() => {
     setComputerUnit(gameEngine.getRandomUnit());
-  }, []);
+  }, [setComputerUnit]);
 
   return (
     <div className="round-container">
@@ -54,7 +75,7 @@ const Round: FC<Props> = ({
           <p className="unit-type">Computer: {computerUnit}</p>
         </div>
       </div>
-      <div className="round-results">Round winner: {gameEngine.checkRoundWinner(playerUnit, computerUnit)} </div>
+      <div className="round-results">Round winner: {roundWinner}</div>
       <button className="btn-next-round" onClick={handleStartNextRound}>
         {'-->'}
       </button>
@@ -72,8 +93,11 @@ export const mapStateToProps = (state: RootReducer) => {
 
 export const mapDispatchToProps = {
   setComputerUnit,
-  startNextRound,
   setWhoSelecting,
+  startNextRound,
+  addPointToPlayer,
+  addPointToComputer,
+  gameOver,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Round);

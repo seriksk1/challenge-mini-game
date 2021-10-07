@@ -6,45 +6,50 @@ import archerImg from '../assets/archer.png';
 import pikemanImg from '../assets/spearman.png';
 
 import { RootReducer } from '../redux/reducers/rootReducer';
-import { startGameAction } from '../redux/actions/game';
+import { startGameAction, restartGame } from '../redux/actions/game';
 import { getWhoSelecting, isGameStarted } from '../redux/selectors';
 
 import { IUnit } from '../redux/interfaces';
+import { GameMemberType } from '../redux/types';
 import { Cavalry, Archer, Pikeman, Player, Computer } from '../redux/constants';
 
-import UnitsList from '../components/UnitsList';
-import { Round } from '../components';
-import { GameMemberType } from '../redux/types';
+import { Score, Round, UnitsList } from '../components';
 
 interface Props {
   started: boolean;
-  playerUnit: IUnit;
   whoIsSelecting: GameMemberType;
+
   onStart: () => void;
+  restartGame: () => void;
 }
 
-const Game: FC<Props> = ({ started, whoIsSelecting, onStart }) => {
+const Game: FC<Props> = ({ started, whoIsSelecting, onStart, restartGame }) => {
   const units: IUnit[] = [
     { id: 0, type: Cavalry, image: cavalryImg },
     { id: 1, type: Archer, image: archerImg },
     { id: 2, type: Pikeman, image: pikemanImg },
   ];
+
   React.useEffect(() => {
     onStart();
   }, [onStart]);
 
   return (
     <div>
+      <Score />
+
       {started && whoIsSelecting === Player ? (
         <>
           <p className="title">Choose unit</p>
           <UnitsList items={units} />
         </>
-      ) : whoIsSelecting === Computer ? (
+      ) : started && whoIsSelecting === Computer ? (
         <Round />
-      ) : (
-        <h1>Loading units...</h1>
-      )}
+      ) : null}
+
+      <button onClick={restartGame} className="btn-restart">
+        Restart
+      </button>
     </div>
   );
 };
@@ -58,6 +63,7 @@ export const mapStateToProps = (state: RootReducer) => {
 
 export const mapDispatchToProps = {
   onStart: startGameAction,
+  restartGame,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

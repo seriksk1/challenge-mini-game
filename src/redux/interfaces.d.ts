@@ -30,6 +30,14 @@ export interface IGameStartAction extends Action<GAME_START> {
   type: GAME_START;
 }
 
+export interface IGameOverAction extends Action<GAME_OVER> {
+  type: GAME_OVER;
+}
+
+export interface IGameRestartAction extends Action<GAME_RESTART> {
+  type: GAME_RESTART;
+}
+
 export interface IGameStartNextAction extends Action<START_NEXT_ROUND> {
   type: START_NEXT_ROUND;
 }
@@ -37,6 +45,16 @@ export interface IGameStartNextAction extends Action<START_NEXT_ROUND> {
 export interface IGameSetWhoSelecting extends Action<SET_WHO_SELECTING> {
   type: SET_WHO_SELECTING;
   payload: GameMemberType;
+}
+
+export interface IGameAddPointToPlayer extends Action<ADD_POINT_TO_PLAYER> {
+  type: ADD_POINT_TO_PLAYER;
+  payload: number;
+}
+
+export interface IGameAddPointToComputer extends Action<ADD_POINT_TO_COMPUTER> {
+  type: ADD_POINT_TO_COMPUTER;
+  payload: number;
 }
 
 // For player reducer

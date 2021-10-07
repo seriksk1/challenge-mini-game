@@ -6,6 +6,18 @@
   justify-content: center;
 }
 
+.score {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.score p {
+  text-align: center;
+  min-width: 100px;
+}
+
 .title {
   font-size: 32px;
   text-align: center;
@@ -44,6 +56,35 @@ p.unit-type {
   text-align: center;
 }
 
+.round-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.round-results {
+  text-align: center;
+}
+
+button {
+  font-size: 18px;
+  margin-top: 25px;
+  padding: 5px 20px;
+}
+
+.btn-restart {
+  margin: 0;
+  padding: 5px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
 .btn-next-round {
-  margin-top: 10px;
+  max-width: 80px;
+}
+
+.game-winner {
+  font-size: 24px;
+  text-align: center;
 }
