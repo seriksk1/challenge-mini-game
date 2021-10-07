@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+import { isAppStarted } from './redux/selectors';
+import { appStartAction } from './redux/actions/app';
+
 import './App.css';
-import { IAppState, isAppStarted, appStartAction } from './getStore';
+import { RootReducer } from './redux/reducers/rootReducer';
 
 export interface Props {
   started: boolean;
@@ -23,10 +26,9 @@ export const AppRoot: React.FC<Props> = ({ started, onStart }) => {
   );
 };
 
-export const mapStateToProps = (state: IAppState) => {
-  const started = isAppStarted(state);
+export const mapStateToProps = (state: RootReducer) => {
   return {
-    started,
+    started: isAppStarted(state),
   };
 };
 

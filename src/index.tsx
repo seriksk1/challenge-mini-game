@@ -5,7 +5,7 @@ import * as serviceWorker from './serviceWorker';
 
 import './index.css';
 import App from './App';
-import getStore from './getStore';
+import getStore from './redux/store';
 
 const store = getStore();
 
@@ -13,6 +13,7 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
+
   document.getElementById('root')
 );
 
