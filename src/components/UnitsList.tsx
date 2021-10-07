@@ -5,16 +5,20 @@ import { RootReducer } from '../redux/reducers/rootReducer';
 import { setPlayerUnit } from '../redux/actions/player';
 
 import { IUnit } from '../redux/interfaces';
-import { UnitType } from '../redux/types';
+import { GameMemberType, UnitType } from '../redux/types';
+import { setWhoSelecting } from '../redux/actions/game';
+import { Computer } from '../redux/constants';
 
 interface Props {
   items: IUnit[];
   setPlayerUnit: (type: UnitType) => void;
+  setWhoSelecting: (gameMember: GameMemberType) => void;
 }
 
-const UnitsList: FC<Props> = ({ items, setPlayerUnit }) => {
+const UnitsList: FC<Props> = ({ items, setPlayerUnit, setWhoSelecting }) => {
   const handleUnitSelect = (type: UnitType) => {
     setPlayerUnit(type);
+    setWhoSelecting(Computer);
   };
 
   return (
@@ -39,6 +43,7 @@ export const mapStateToProps = (state: RootReducer) => {
 
 export const mapDispatchToProps = {
   setPlayerUnit,
+  setWhoSelecting,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UnitsList);

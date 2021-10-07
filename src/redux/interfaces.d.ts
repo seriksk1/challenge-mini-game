@@ -23,6 +23,7 @@ export interface IGameState {
   playerScore: number;
   computerScore: number;
   currentRound: number;
+  whoSelecting: GameMemberType;
 }
 
 export interface IGameStartAction extends Action<GAME_START> {
@@ -31,6 +32,11 @@ export interface IGameStartAction extends Action<GAME_START> {
 
 export interface IGameStartNextAction extends Action<START_NEXT_ROUND> {
   type: START_NEXT_ROUND;
+}
+
+export interface IGameSetWhoSelecting extends Action<SET_WHO_SELECTING> {
+  type: SET_WHO_SELECTING;
+  payload: GameMemberType;
 }
 
 // For player reducer

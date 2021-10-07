@@ -5,6 +5,8 @@ export const isAppStarted = (state: RootReducer) => state.app.started;
 
 // For game reducer
 export const isGameStarted = (state: RootReducer) => state.game.started;
+export const getWhoSelecting = (state: RootReducer) => state.game.whoSelecting;
+export const getGameRounds = (state: RootReducer) => state.game.currentRound;
 
 // For player reducer
 export const getPlayerUnit = (state: RootReducer) => state.player.unit;

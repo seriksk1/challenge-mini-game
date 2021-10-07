@@ -7,20 +7,23 @@ import pikemanImg from '../assets/spearman.png';
 
 import { RootReducer } from '../redux/reducers/rootReducer';
 import { startGameAction } from '../redux/actions/game';
-import { isGameStarted } from '../redux/selectors';
+import { getWhoSelecting, isGameStarted } from '../redux/selectors';
 
 import { IUnit } from '../redux/interfaces';
-import { Cavalry, Archer, Pikeman } from '../redux/constants';
+import { Cavalry, Archer, Pikeman, Player, Computer } from '../redux/constants';
 
 import UnitsList from '../components/UnitsList';
+import { Round } from '../components';
+import { GameMemberType } from '../redux/types';
 
 interface Props {
   started: boolean;
   playerUnit: IUnit;
+  whoIsSelecting: GameMemberType;
   onStart: () => void;
 }
 
-const Game: FC<Props> = ({ started, onStart }) => {
+const Game: FC<Props> = ({ started, whoIsSelecting, onStart }) => {
   const units: IUnit[] = [
     { id: 0, type: Cavalry, image: cavalryImg },
     { id: 1, type: Archer, image: archerImg },
@@ -32,11 +35,13 @@ const Game: FC<Props> = ({ started, onStart }) => {
 
   return (
     <div>
-      {started ? (
+      {started && whoIsSelecting === Player ? (
         <>
           <p className="title">Choose unit</p>
           <UnitsList items={units} />
         </>
+      ) : whoIsSelecting === Computer ? (
+        <Round />
       ) : (
         <h1>Loading units...</h1>
       )}
@@ -47,6 +52,7 @@ const Game: FC<Props> = ({ started, onStart }) => {
 export const mapStateToProps = (state: RootReducer) => {
   return {
     started: isGameStarted(state),
+    whoIsSelecting: getWhoSelecting(state),
   };
 };
 
