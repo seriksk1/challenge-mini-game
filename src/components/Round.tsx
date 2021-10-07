@@ -1,15 +1,16 @@
 import React, { FC } from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { GameMemberType, UnitType } from '../redux/types';
-
 import { RootReducer } from '../redux/reducers/rootReducer';
-import { setComputerUnit } from '../redux/actions/computer';
+import { GameMemberType, UnitType } from '../redux/types';
+import { Player } from '../redux/constants';
 
 import { getComputerUnit, getGameRounds, getPlayerUnit } from '../redux/selectors';
 import { setWhoSelecting, startNextRound } from '../redux/actions/game';
-import { useHistory } from 'react-router-dom';
-import { Player } from '../redux/constants';
+import { setComputerUnit } from '../redux/actions/computer';
+
+import gameEngine from '../redux/services/gameEngine';
 
 interface Props {
   playerUnit: UnitType;
@@ -40,7 +41,7 @@ const Round: FC<Props> = ({
   };
 
   React.useEffect(() => {
-    setComputerUnit('Archer');
+    setComputerUnit(gameEngine.getRandomUnit());
   }, []);
 
   return (
@@ -53,7 +54,7 @@ const Round: FC<Props> = ({
           <p className="unit-type">Computer: {computerUnit}</p>
         </div>
       </div>
-      <div className="round-results">Round winner: </div>
+      <div className="round-results">Round winner: {gameEngine.checkRoundWinner(playerUnit, computerUnit)} </div>
       <button className="btn-next-round" onClick={handleStartNextRound}>
         {'-->'}
       </button>
