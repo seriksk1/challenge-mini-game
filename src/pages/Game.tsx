@@ -1,9 +1,13 @@
 import React, { FC } from 'react';
 import { connect } from 'react-redux';
 
+import cavalryImg from '../assets/cavalry.png';
+import archerImg from '../assets/archer.png';
+import pikemanImg from '../assets/spearman.png';
+
 import { RootReducer } from '../redux/reducers/rootReducer';
 import { startGameAction } from '../redux/actions/game';
-import { getPlayerUnit, isGameStarted } from '../redux/selectors';
+import { isGameStarted } from '../redux/selectors';
 
 import { IUnit } from '../redux/interfaces';
 import { Cavalry, Archer, Pikeman } from '../redux/constants';
@@ -16,13 +20,12 @@ interface Props {
   onStart: () => void;
 }
 
-const Game: FC<Props> = ({ started, onStart, playerUnit }) => {
+const Game: FC<Props> = ({ started, onStart }) => {
   const units: IUnit[] = [
-    { id: 0, type: Cavalry },
-    { id: 1, type: Archer },
-    { id: 2, type: Pikeman },
+    { id: 0, type: Cavalry, image: cavalryImg },
+    { id: 1, type: Archer, image: archerImg },
+    { id: 2, type: Pikeman, image: pikemanImg },
   ];
-
   React.useEffect(() => {
     onStart();
   }, [onStart]);
@@ -44,7 +47,6 @@ const Game: FC<Props> = ({ started, onStart, playerUnit }) => {
 export const mapStateToProps = (state: RootReducer) => {
   return {
     started: isGameStarted(state),
-    playerUnit: getPlayerUnit(state),
   };
 };
 

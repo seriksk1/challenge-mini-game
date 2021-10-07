@@ -5,3 +5,45 @@
   align-items: center;
   justify-content: center;
 }
+
+.title {
+  font-size: 32px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+ul.units-list {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+li.units-list-item {
+  display: flex;
+  flex-direction: column-reverse;
+  margin: 0 20px;
+}
+
+img.unit-image {
+  box-sizing: border-box;
+  width: 150px;
+  height: 150px;
+  padding: 15px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+img.unit-image:hover {
+  filter: drop-shadow(2px 4px 4px #00000080);
+  transform: scale(1.05);
+}
+
+p.unit-type {
+  text-align: center;
+}
+
+.btn-next-round {
+  margin-top: 10px;
+}

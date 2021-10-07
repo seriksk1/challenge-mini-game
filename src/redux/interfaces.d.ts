@@ -3,6 +3,7 @@
 export interface IUnit {
   id: number;
   type: UnitType;
+  image: string;
 }
 
 // For app reducer

@@ -22,8 +22,9 @@ const UnitsList: FC<Props> = ({ items, setPlayerUnit }) => {
       {items.length !== 0
         ? items.map((item) => {
             return (
-              <li key={item.id} onClick={() => handleUnitSelect(item.type)} className="units-list-item">
+              <li key={item.id} className="units-list-item">
                 <p className="unit-type">{item.type}</p>
+                <img onClick={() => handleUnitSelect(item.type)} className="unit-image" src={item.image} alt="" />
               </li>
             );
           })
