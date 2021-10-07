@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5b2ab2b18208bfeb905ee31633158f02",
+    "revision": "ca4a7d5280a0ce29d5363f3c9f1c2ffd",
     "url": "/challenge-mini-game/index.html"
   },
   {
-    "revision": "15b0102048ed280c9179",
+    "revision": "db0ce24afcbdc6a4b553",
     "url": "/challenge-mini-game/static/css/main.fab4b79a.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/challenge-mini-game/static/js/2.bb840178.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "15b0102048ed280c9179",
-    "url": "/challenge-mini-game/static/js/main.5ebe6e74.chunk.js"
+    "revision": "db0ce24afcbdc6a4b553",
+    "url": "/challenge-mini-game/static/js/main.306c3f42.chunk.js"
   },
   {
     "revision": "37359c79182010ec643c",

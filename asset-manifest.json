@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/challenge-mini-game/static/css/main.fab4b79a.chunk.css",
-    "main.js": "/challenge-mini-game/static/js/main.5ebe6e74.chunk.js",
-    "main.js.map": "/challenge-mini-game/static/js/main.5ebe6e74.chunk.js.map",
+    "main.js": "/challenge-mini-game/static/js/main.306c3f42.chunk.js",
+    "main.js.map": "/challenge-mini-game/static/js/main.306c3f42.chunk.js.map",
     "runtime-main.js": "/challenge-mini-game/static/js/runtime-main.1d6aadb3.js",
     "runtime-main.js.map": "/challenge-mini-game/static/js/runtime-main.1d6aadb3.js.map",
     "static/js/2.bb840178.chunk.js": "/challenge-mini-game/static/js/2.bb840178.chunk.js",
     "static/js/2.bb840178.chunk.js.map": "/challenge-mini-game/static/js/2.bb840178.chunk.js.map",
     "index.html": "/challenge-mini-game/index.html",
-    "precache-manifest.85cdd46b2ac7f8d99bc01372b2312a1c.js": "/challenge-mini-game/precache-manifest.85cdd46b2ac7f8d99bc01372b2312a1c.js",
+    "precache-manifest.980da7161625b1d42bc7ddbcbab69e95.js": "/challenge-mini-game/precache-manifest.980da7161625b1d42bc7ddbcbab69e95.js",
     "service-worker.js": "/challenge-mini-game/service-worker.js",
     "static/css/main.fab4b79a.chunk.css.map": "/challenge-mini-game/static/css/main.fab4b79a.chunk.css.map",
     "static/js/2.bb840178.chunk.js.LICENSE.txt": "/challenge-mini-game/static/js/2.bb840178.chunk.js.LICENSE.txt",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.1d6aadb3.js",
     "static/js/2.bb840178.chunk.js",
     "static/css/main.fab4b79a.chunk.css",
-    "static/js/main.5ebe6e74.chunk.js"
+    "static/js/main.306c3f42.chunk.js"
   ]
 }
