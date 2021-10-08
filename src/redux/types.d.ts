@@ -16,6 +16,8 @@ import {
   SET_COMPUTER_UNIT,
 } from './constants';
 
+import { IAppState } from './interfaces';
+
 // general
 
 export type UnitType = typeof Cavalry | typeof Archer | typeof Pikeman;

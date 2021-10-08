@@ -5,7 +5,7 @@ import { restartGame } from '../redux/actions/game';
 function Home() {
   const history = useHistory();
 
-  const handleStartGame = () => {
+  const handleToGame = () => {
     history.push('/game');
   };
 
@@ -15,7 +15,7 @@ function Home() {
 
   return (
     <div>
-      <button onClick={handleStartGame}>Start game</button>
+      <button onClick={handleToGame}>Start game</button>
     </div>
   );
 }

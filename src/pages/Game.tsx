@@ -16,7 +16,7 @@ import { Cavalry, Archer, Pikeman, Player, Computer } from '../redux/constants';
 import { Score, Round, UnitsList } from '../components';
 import gameEngine from '../redux/services/gameEngine';
 
-interface Props {
+export interface Props {
   started: boolean;
   whoIsSelecting: GameMemberType;
 
@@ -24,7 +24,7 @@ interface Props {
   restartGame: () => void;
 }
 
-const Game: FC<Props> = ({ started, whoIsSelecting, onStart, restartGame }) => {
+export const GameRoot: FC<Props> = ({ started, whoIsSelecting, onStart, restartGame }) => {
   const units: IUnit[] = [
     { id: 0, type: Cavalry, image: cavalryImg },
     { id: 1, type: Archer, image: archerImg },
@@ -37,6 +37,7 @@ const Game: FC<Props> = ({ started, whoIsSelecting, onStart, restartGame }) => {
   };
 
   React.useEffect(() => {
+    gameEngine.initialize();
     onStart();
   }, [onStart]);
 
@@ -71,5 +72,5 @@ export const mapDispatchToProps = {
   onStart: startGameAction,
   restartGame,
 };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Game);
+const Game = connect(mapStateToProps, mapDispatchToProps)(GameRoot);
+export default Game;

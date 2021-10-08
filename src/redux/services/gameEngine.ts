@@ -19,14 +19,9 @@ class GameEngine implements IGameEngine {
     { type: Cavalry, chance: 0 },
   ];
 
-  constructor() {
-    this.initialize();
-  }
-
   initialize() {
     this.resetChances();
     this.setPreferredUnit();
-    console.log(this.units);
   }
 
   resetChances() {
@@ -36,6 +31,10 @@ class GameEngine implements IGameEngine {
   setPreferredUnit() {
     const randIndex = Math.floor(Math.random() * this.units.length);
     this.units[randIndex].chance = 0.5;
+  }
+
+  getUnits() {
+    return this.units;
   }
 
   getRandomUnit() {

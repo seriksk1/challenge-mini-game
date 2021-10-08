@@ -1,9 +1,16 @@
-import { shallow } from 'enzyme';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import { initialState } from '../redux/reducers/app';
+import { RootReducer } from '../redux/reducers/rootReducer';
 import { AppRoot, mapStateToProps } from '../App';
+import { Props as AppProps } from '../App';
+
+import { initialState as appInitialState } from '../redux/reducers/app';
+import { initialState as gameInitialState } from '../redux/reducers/game';
+import { initialState as computerInitialState } from '../redux/reducers/computer';
+import { initialState as playerInitialState } from '../redux/reducers/player';
 
 describe('Root App component rendering', () => {
   beforeEach(() => {
@@ -11,8 +18,18 @@ describe('Root App component rendering', () => {
   });
 
   it('renders without crashing', () => {
+    const props: AppProps = {
+      started: true,
+      onStart: () => null,
+    };
+
     const div = document.createElement('div');
-    ReactDOM.render(<AppRoot started={true} onStart={() => null} />, div);
+    ReactDOM.render(
+      <Router>
+        <AppRoot {...props} />;
+      </Router>,
+      div
+    );
     ReactDOM.unmountComponentAtNode(div);
   });
 
@@ -37,9 +54,11 @@ describe('Root App component rendering', () => {
   });
 
   it('properly binds state', () => {
-    const state = {
-      ...initialState,
-      app: { started: true },
+    const state: RootReducer = {
+      app: { ...appInitialState, started: true },
+      game: { ...gameInitialState },
+      computer: { ...computerInitialState },
+      player: { ...playerInitialState },
     };
     const props = mapStateToProps(state);
     expect(props.started).toEqual(true);

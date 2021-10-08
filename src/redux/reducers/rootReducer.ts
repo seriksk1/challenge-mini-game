@@ -10,11 +10,13 @@ export interface RootReducer {
   computer: IComputerState;
 }
 
-const rootReducer = combineReducers<RootReducer>({
+export const reducers = {
   app: appReducer,
   game: gameReducer,
   player: playerReducer,
   computer: computerReducer,
-});
+};
+
+const rootReducer = combineReducers<RootReducer>(reducers);
 
 export default rootReducer;

@@ -64,7 +64,7 @@ export default function gameReducer(state: IGameState = initialState, action: Ga
         score: {
           ...state.score,
           [winner]: state.score[winner] + 1,
-          [looser]: state.score[looser] - 1,
+          [looser]: state.score[looser] !== 0 ? state.score[looser] - 1 : 0,
         },
       };
     }
