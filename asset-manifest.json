@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/challenge-mini-game/static/css/main.fab4b79a.chunk.css",
-    "main.js": "/challenge-mini-game/static/js/main.306c3f42.chunk.js",
-    "main.js.map": "/challenge-mini-game/static/js/main.306c3f42.chunk.js.map",
+    "main.css": "/challenge-mini-game/static/css/main.f858dc90.chunk.css",
+    "main.js": "/challenge-mini-game/static/js/main.31bcb78f.chunk.js",
+    "main.js.map": "/challenge-mini-game/static/js/main.31bcb78f.chunk.js.map",
     "runtime-main.js": "/challenge-mini-game/static/js/runtime-main.1d6aadb3.js",
     "runtime-main.js.map": "/challenge-mini-game/static/js/runtime-main.1d6aadb3.js.map",
-    "static/js/2.bb840178.chunk.js": "/challenge-mini-game/static/js/2.bb840178.chunk.js",
-    "static/js/2.bb840178.chunk.js.map": "/challenge-mini-game/static/js/2.bb840178.chunk.js.map",
+    "static/js/2.1ca938ef.chunk.js": "/challenge-mini-game/static/js/2.1ca938ef.chunk.js",
+    "static/js/2.1ca938ef.chunk.js.map": "/challenge-mini-game/static/js/2.1ca938ef.chunk.js.map",
     "index.html": "/challenge-mini-game/index.html",
-    "precache-manifest.980da7161625b1d42bc7ddbcbab69e95.js": "/challenge-mini-game/precache-manifest.980da7161625b1d42bc7ddbcbab69e95.js",
+    "precache-manifest.e34775f5ed1d9e7dccf72618462e7d4c.js": "/challenge-mini-game/precache-manifest.e34775f5ed1d9e7dccf72618462e7d4c.js",
     "service-worker.js": "/challenge-mini-game/service-worker.js",
-    "static/css/main.fab4b79a.chunk.css.map": "/challenge-mini-game/static/css/main.fab4b79a.chunk.css.map",
-    "static/js/2.bb840178.chunk.js.LICENSE.txt": "/challenge-mini-game/static/js/2.bb840178.chunk.js.LICENSE.txt",
+    "static/css/main.f858dc90.chunk.css.map": "/challenge-mini-game/static/css/main.f858dc90.chunk.css.map",
+    "static/js/2.1ca938ef.chunk.js.LICENSE.txt": "/challenge-mini-game/static/js/2.1ca938ef.chunk.js.LICENSE.txt",
     "static/media/archer.png": "/challenge-mini-game/static/media/archer.be2c31a1.png",
     "static/media/cavalry.png": "/challenge-mini-game/static/media/cavalry.643df87e.png",
     "static/media/spearman.png": "/challenge-mini-game/static/media/spearman.f2f50535.png"
   },
   "entrypoints": [
     "static/js/runtime-main.1d6aadb3.js",
-    "static/js/2.bb840178.chunk.js",
-    "static/css/main.fab4b79a.chunk.css",
-    "static/js/main.306c3f42.chunk.js"
+    "static/js/2.1ca938ef.chunk.js",
+    "static/css/main.f858dc90.chunk.css",
+    "static/js/main.31bcb78f.chunk.js"
   ]
 }

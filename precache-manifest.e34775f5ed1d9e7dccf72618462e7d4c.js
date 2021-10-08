@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ca4a7d5280a0ce29d5363f3c9f1c2ffd",
+    "revision": "ec4826063b378b72ad7723ae8a449c8c",
     "url": "/challenge-mini-game/index.html"
   },
   {
-    "revision": "db0ce24afcbdc6a4b553",
-    "url": "/challenge-mini-game/static/css/main.fab4b79a.chunk.css"
+    "revision": "4307de6666c7d18a73de",
+    "url": "/challenge-mini-game/static/css/main.f858dc90.chunk.css"
   },
   {
-    "revision": "0597add46c4565f08d65",
-    "url": "/challenge-mini-game/static/js/2.bb840178.chunk.js"
+    "revision": "ad82f76e00c718e53a85",
+    "url": "/challenge-mini-game/static/js/2.1ca938ef.chunk.js"
   },
   {
     "revision": "9b318b6fb13190fe82c0677e9264b3c7",
-    "url": "/challenge-mini-game/static/js/2.bb840178.chunk.js.LICENSE.txt"
+    "url": "/challenge-mini-game/static/js/2.1ca938ef.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "db0ce24afcbdc6a4b553",
-    "url": "/challenge-mini-game/static/js/main.306c3f42.chunk.js"
+    "revision": "4307de6666c7d18a73de",
+    "url": "/challenge-mini-game/static/js/main.31bcb78f.chunk.js"
   },
   {
     "revision": "37359c79182010ec643c",
