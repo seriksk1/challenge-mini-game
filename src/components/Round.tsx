@@ -2,25 +2,25 @@ import React, { FC } from 'react';
 import { connect } from 'react-redux';
 
 import { getComputerUnit, getGameRounds, getPlayerUnit } from '../redux/selectors';
-import { setWhoSelecting, startNextRound, addPointToPlayer, addPointToComputer, gameOver } from '../redux/actions/game';
+import { setWhoSelecting, startNextRound, distributePoints, gameOver } from '../redux/actions/game';
 
-import { GameMemberType, UnitType, Winner } from '../redux/types';
-import { Computer, Draw, Player } from '../redux/constants';
+import { GameMemberType, UnitType } from '../redux/types';
+import { Player } from '../redux/constants';
 
 import { RootReducer } from '../redux/reducers/rootReducer';
 import { setComputerUnit } from '../redux/actions/computer';
 
-import gameEngine from '../redux/services/gameEngine';
+import { IGameResults, IGameEngine } from '../redux/interfaces';
 
 interface Props {
+  gameRounds: number;
+  gameEngine: IGameEngine;
   playerUnit: UnitType;
   computerUnit: UnitType;
-  gameRounds: number;
   setComputerUnit: (unit: UnitType) => void;
   startNextRound: () => void;
   setWhoSelecting: (gameMember: GameMemberType) => void;
-  addPointToPlayer: (points: number) => void;
-  addPointToComputer: (points: number) => void;
+  distributePoints: (results: IGameResults) => void;
   gameOver: () => void;
 }
 
@@ -28,30 +28,20 @@ const Round: FC<Props> = ({
   gameRounds,
   playerUnit,
   computerUnit,
+  gameEngine,
   setComputerUnit,
   startNextRound,
   setWhoSelecting,
-  addPointToPlayer,
-  addPointToComputer,
+  distributePoints,
   gameOver,
 }) => {
-  const roundWinner = gameEngine.checkRoundWinner(playerUnit, computerUnit);
-
-  const addPointTo = (roundWinner: Winner) => {
-    if (roundWinner === Player) {
-      addPointToPlayer(1);
-      addPointToComputer(-1);
-    } else if (roundWinner === Computer) {
-      addPointToComputer(1);
-      addPointToPlayer(-1);
-    } else if (roundWinner === Draw) {
-      addPointToPlayer(1);
-      addPointToComputer(1);
-    }
-  };
+  const roundResults = gameEngine.checkRoundWinner(playerUnit, computerUnit);
 
   const handleStartNextRound = () => {
-    addPointTo(roundWinner);
+    if (!roundResults.isDraw) {
+      distributePoints(roundResults);
+    }
+
     startNextRound();
 
     if (gameRounds + 1 < 20) {
@@ -75,7 +65,7 @@ const Round: FC<Props> = ({
           <p className="unit-type">Computer: {computerUnit}</p>
         </div>
       </div>
-      <div className="round-results">Round winner: {roundWinner}</div>
+      <div className="round-results">Round winner: {roundResults.isDraw ? 'Draw' : roundResults.winner}</div>
       <button className="btn-next-round" onClick={handleStartNextRound}>
         {'-->'}
       </button>
@@ -95,8 +85,7 @@ export const mapDispatchToProps = {
   setComputerUnit,
   setWhoSelecting,
   startNextRound,
-  addPointToPlayer,
-  addPointToComputer,
+  distributePoints,
   gameOver,
 };
 

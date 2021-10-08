@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { connect } from 'react-redux';
 
 import { RootReducer } from '../redux/reducers/rootReducer';
-import { getComputerScore, getPlayerScore, isGameStarted } from '../redux/selectors';
+import { getComputerScore, getGameRounds, getPlayerScore, isGameStarted } from '../redux/selectors';
 
 import gameEngine from '../redux/services/gameEngine';
 
@@ -10,11 +10,13 @@ interface Props {
   playerScore: number;
   computerScore: number;
   started: boolean;
+  gameRounds: number;
 }
 
-const Score: FC<Props> = ({ playerScore, computerScore, started }) => {
+const Score: FC<Props> = ({ started, playerScore, computerScore, gameRounds }) => {
   return (
     <>
+      <h1 className="rounds">Round {gameRounds}</h1>
       <div className="score">
         <p>Player</p>
         <h1>
@@ -34,6 +36,7 @@ export const mapStateToProps = (state: RootReducer) => {
     started: isGameStarted(state),
     computerScore: getComputerScore(state),
     playerScore: getPlayerScore(state),
+    gameRounds: getGameRounds(state),
   };
 };
 

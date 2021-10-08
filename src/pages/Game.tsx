@@ -14,6 +14,7 @@ import { GameMemberType } from '../redux/types';
 import { Cavalry, Archer, Pikeman, Player, Computer } from '../redux/constants';
 
 import { Score, Round, UnitsList } from '../components';
+import gameEngine from '../redux/services/gameEngine';
 
 interface Props {
   started: boolean;
@@ -30,6 +31,11 @@ const Game: FC<Props> = ({ started, whoIsSelecting, onStart, restartGame }) => {
     { id: 2, type: Pikeman, image: pikemanImg },
   ];
 
+  const handleRestartGame = () => {
+    gameEngine.initialize();
+    restartGame();
+  };
+
   React.useEffect(() => {
     onStart();
   }, [onStart]);
@@ -44,10 +50,10 @@ const Game: FC<Props> = ({ started, whoIsSelecting, onStart, restartGame }) => {
           <UnitsList items={units} />
         </>
       ) : started && whoIsSelecting === Computer ? (
-        <Round />
+        <Round gameEngine={gameEngine} />
       ) : null}
 
-      <button onClick={restartGame} className="btn-restart">
+      <button onClick={handleRestartGame} className="btn-restart">
         Restart
       </button>
     </div>

@@ -63,6 +63,7 @@ p.unit-type {
 }
 
 .round-results {
+  text-transform: capitalize;
   text-align: center;
 }
 
@@ -86,5 +87,11 @@ button {
 
 .game-winner {
   font-size: 24px;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.rounds {
+  margin: 0;
   text-align: center;
 }

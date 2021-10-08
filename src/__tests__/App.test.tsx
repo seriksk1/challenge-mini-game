@@ -2,7 +2,7 @@ import { shallow } from 'enzyme';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 
-import { initialState } from '../getStore';
+import { initialState } from '../redux/reducers/app';
 import { AppRoot, mapStateToProps } from '../App';
 
 describe('Root App component rendering', () => {
@@ -39,7 +39,7 @@ describe('Root App component rendering', () => {
   it('properly binds state', () => {
     const state = {
       ...initialState,
-      started: true,
+      app: { started: true },
     };
     const props = mapStateToProps(state);
     expect(props.started).toEqual(true);

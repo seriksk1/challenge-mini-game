@@ -6,6 +6,26 @@ export interface IUnit {
   image: string;
 }
 
+export interface IUnitWithChance {
+  type: UnitType;
+  chance: number;
+}
+
+export interface IGameResults {
+  winner?: GameResultType;
+  looser?: GameResultType;
+  isDraw?: boolean;
+}
+
+export interface IGameEngine {
+  initialize: () => void;
+  setPreferredUnit: () => void;
+  getRandomUnit: () => UnitType;
+  resetChances: () => void;
+  checkRoundWinner: (playerUnit: UnitType, computerUnit: UnitType) => GameResults;
+  checkGameWinner: (playerScore: number, computerScore: number) => string;
+}
+
 // For app reducer
 
 export interface IAppState {
@@ -20,8 +40,10 @@ export interface IAppStartAction extends Action<APP_START> {
 
 export interface IGameState {
   started: boolean;
-  playerScore: number;
-  computerScore: number;
+  score: {
+    player: number;
+    computer: number;
+  };
   currentRound: number;
   whoSelecting: GameMemberType;
 }
@@ -47,14 +69,9 @@ export interface IGameSetWhoSelecting extends Action<SET_WHO_SELECTING> {
   payload: GameMemberType;
 }
 
-export interface IGameAddPointToPlayer extends Action<ADD_POINT_TO_PLAYER> {
-  type: ADD_POINT_TO_PLAYER;
-  payload: number;
-}
-
-export interface IGameAddPointToComputer extends Action<ADD_POINT_TO_COMPUTER> {
-  type: ADD_POINT_TO_COMPUTER;
-  payload: number;
+export interface IGameDistributePoints extends Action<DISTRIBUTE_POINTS> {
+  type: DISTRIBUTE_POINTS;
+  payload: GameResults;
 }
 
 // For player reducer

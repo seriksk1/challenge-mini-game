@@ -11,7 +11,7 @@ import getStore from './redux/store';
 const store = getStore();
 
 ReactDOM.render(
-  <Router>
+  <Router basename="/challenge-mini-game">
     <Provider store={store}>
       <App />
     </Provider>

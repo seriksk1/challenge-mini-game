@@ -6,22 +6,21 @@ import {
   Computer,
   Draw,
   APP_START,
+  GAME_OVER,
   GAME_START,
-  SET_PLAYER_UNIT,
-  SET_COMPUTER_UNIT,
+  GAME_RESTART,
   START_NEXT_ROUND,
   SET_WHO_SELECTING,
-  ADD_POINT_TO_PLAYER,
-  ADD_POINT_TO_COMPUTER,
-  GAME_OVER,
-  GAME_RESTART,
+  DISTRIBUTE_POINTS,
+  SET_PLAYER_UNIT,
+  SET_COMPUTER_UNIT,
 } from './constants';
 
 // general
 
 export type UnitType = typeof Cavalry | typeof Archer | typeof Pikeman;
 export type GameMemberType = typeof Player | typeof Computer;
-export type Winner = typeof Player | typeof Computer | Draw;
+export type GameResultType = GameMemberType | typeof Draw;
 
 // For app reducer
 
@@ -32,24 +31,21 @@ export type AppReducer = Reducer<IAppState, AppActions | Action>;
 
 // For game reducer
 
-export type GAME_START = typeof GAME_START;
 export type GAME_OVER = typeof GAME_OVER;
+export type GAME_START = typeof GAME_START;
 export type GAME_RESTART = typeof GAME_RESTART;
 
 export type START_NEXT_ROUND = typeof START_NEXT_ROUND;
 export type SET_WHO_SELECTING = typeof SET_WHO_SELECTING;
-
-export type ADD_POINT_TO_PLAYER = typeof ADD_POINT_TO_PLAYER;
-export type ADD_POINT_TO_COMPUTER = typeof ADD_POINT_TO_COMPUTER;
+export type DISTRIBUTE_POINTS = typeof DISTRIBUTE_POINTS;
 
 export type GameActions =
+  | IGameOverAction
   | IGameStartAction
   | IGameRestartAction
-  | IGameOverAction
   | IGameStartNextAction
   | IGameSetWhoSelecting
-  | IGameAddPointToPlayer
-  | IGameAddPointToComputer;
+  | IGameDistributePoints;
 
 export type GameReducer = Reducer<IGameState, GameActions | Action>;
 
